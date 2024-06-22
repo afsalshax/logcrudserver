@@ -715,3 +715,333 @@ logcrudserver.get('/',(req,res)=>{
 
 // export default Auth
 
+
+
+//Angular 
+
+//ts file
+
+// import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, Validators } from '@angular/forms';
+// import { EcartService } from '../services/ecart.service';
+// import { Router } from '@angular/router';
+
+// @Component({
+//   selector: 'app-login',
+//   templateUrl: './login.component.html',
+//   styleUrls: ['./login.component.css']
+// })
+// export class LoginComponent implements OnInit{
+
+//   loginForm=this.fb.group({
+//     email:['',[Validators.required,Validators.email]],
+//     password:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]+')]]
+
+
+//   })
+
+//   constructor (private fb:FormBuilder, private es:EcartService,private rout:Router) { }
+
+//   ngOnInit(): void {
+    
+//   }
+
+//   login(){
+//     if(this.loginForm.valid){
+//       var reqBody={
+//         email:this.loginForm.value.email,
+//         password:this.loginForm.value.password
+//       }
+//       this.es.loginApi(reqBody).subscribe({
+//         next:(result:any)=>{
+
+//           //localstorage
+//           localStorage.setItem("currentUser",result.existingUser.userName)
+//           localStorage.setItem("token",result.token)
+
+//           alert(`login successfully`)
+//           this.loginForm.reset()
+//           this.rout.navigateByUrl("/")
+//         },
+//         error:(err:any)=>{
+//           alert(err.error)
+//         }
+//       })
+//     }
+//     else{
+//       alert('please fill all datas')
+//     }
+//   }
+// }
+
+
+
+// next
+
+// import { Component, OnInit } from '@angular/core';
+// import { EcartService } from '../services/ecart.service';
+
+// @Component({
+//   selector: 'app-all-products',
+//   templateUrl: './all-products.component.html',
+//   styleUrls: ['./all-products.component.css']
+// })
+// export class AllProductsComponent implements OnInit{
+
+//   constructor(private es:EcartService){}
+
+//   allproducts:any=[]
+
+//   data:any='afsal'
+
+//   ngOnInit(): void {
+//     this.es.getAllProducts().subscribe({
+//       next:(result:any)=>{
+//         this.allproducts=result
+//         console.log(this.allproducts);
+        
+//       },
+//       error:(err:any)=>{
+//         console.log(err);
+        
+//       }
+//     })
+//   }
+
+
+// addToCart(){
+//   if(localStorage.getItem("currentUser")){
+//     alert('cart working')
+//   }
+//   else{
+//     alert('please login first')
+//   }
+// }
+
+// addToWishlist(){
+//   if(localStorage.getItem("currentUser")){
+//     alert("wishlist working")
+//   }
+//   else{
+//     alert('please login first')
+//   }
+// }
+
+
+
+// }
+
+//register html
+
+{/* <div>
+    <div style="height: 500px; width: 80%;" class="row shadow-lg mt-5 mb-5">
+
+        <div class="col-lg-6">
+            <img src="" alt="">
+        </div>
+
+        <div class="col-lg-6">
+            <h4 class="mt-5 text-center">Register your Account</h4>
+
+            <div class=" p-5 mt-1 ms-5" style="width: 100%;">
+
+
+             <form [formGroup]="registerForm" action="" class="">
+                   <div class="">
+                       <label for="exampleFormControlInput" class="form-label">username</label>
+                       <input formControlName="userName" type="text" class="form-control w-75" id="exampleFormControlInput1"
+                           placeholder="name@example.com">
+                         <div *ngIf="this.registerForm.get('userName')?.errors && this.registerForm.get('userName')?.touched"><p class="text-danger mt-1">invalid username</p></div>
+                
+                       <label for="exampleFormControlInput1" class="form-label mt-3">Email address</label>
+                       <input formControlName="email" type="email" class="form-control w-75" id="exampleFormControlInput1"
+                           placeholder="name@example.com">
+
+                           <div *ngIf="this.registerForm.get('email')?.errors && this.registerForm.get('email')?.touched"><p class="text-danger mt-1">invalid email</p></div>
+
+                
+                       <label for="inputPassword5" class="form-label mt-3">Password</label>
+                       <input formControlName="password" type="password" id="inputPassword5" class="form-control w-75"
+                           aria-describedby="passwordHelpBlock">
+
+                           <div *ngIf="this.registerForm.get('password')?.errors && this.registerForm.get('password')?.touched"><p class="text-danger mt-1">invalid password</p></div>
+
+                
+                   </div>
+                   <div style="text-align: center;" class="me-5">
+                       <button type="submit" (click)="register()" class="btn btn-primary btn-sm mt-3">Register</button>
+                       <p class="mt-2 me-5">Already have an account?<a class="" style="font-size: small;"
+                               routerLink="/login">signin</a></p>
+                
+                   </div>
+             </form>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div> */}
+
+
+//register ts
+
+
+// import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, Validators } from '@angular/forms';
+// import { EcartService } from '../services/ecart.service';
+// import { Router } from '@angular/router';
+
+// @Component({
+//   selector: 'app-register',
+//   templateUrl: './register.component.html',
+//   styleUrls: ['./register.component.css']
+// })
+// export class RegisterComponent implements OnInit {
+
+//     registerForm=this.fb.group({
+//       userName:['',[Validators.required,Validators.pattern('[a-zA-Z]+')]],
+//       email:['',[Validators.required,Validators.email]],
+//       password:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]+')]]
+
+
+//     })
+
+//     constructor(private fb:FormBuilder,private es:EcartService,private rout:Router) { }
+
+//   ngOnInit(): void {
+    
+//   }
+
+//   register(){
+//     if(this.registerForm.valid){
+//       var reqBody={
+//         userName:this.registerForm.value.userName,
+//         email:this.registerForm.value.email,
+//         password:this.registerForm.value.password
+//       }
+//       this.es.registerApi(reqBody).subscribe({
+//         next:(result:any)=>{
+//           alert(`${result.userName} registered successfully`)
+//           this.rout.navigateByUrl('login')
+//         },
+//         error:(err:any)=>{
+//           alert(err.error)
+//         }
+//       })
+//     }
+//     else{
+//       alert('please fill all datas')
+//     }
+//   }
+
+// } 
+
+
+// angular services
+
+// import { HttpClient } from '@angular/common/http';
+// import { Injectable } from '@angular/core';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class EcartService {
+
+//   BASE_URL="http://localhost:3000"
+
+//   constructor(private http:HttpClient) { }
+
+//   //get all products
+//   getAllProducts(){
+//    return this.http.get(`${this.BASE_URL}/products/all`)
+//   }
+
+// //register
+// registerApi(bodyData:any){
+//   return this.http.post(`${this.BASE_URL}/user/register`,bodyData)
+// }
+
+// //login
+// loginApi(bodyData:any){
+//   return this.http.post(`${this.BASE_URL}/user/login`,bodyData)
+// }
+
+// }
+
+
+//Angular appmodule.ts
+
+
+// import { NgModule } from '@angular/core';
+// import { BrowserModule } from '@angular/platform-browser';
+
+// import { AppRoutingModule } from './app-routing.module';
+// import { AppComponent } from './app.component';
+// import { FooterComponent } from './footer/footer.component';
+// import { HeaderComponent } from './header/header.component';
+// import { AllProductsComponent } from './all-products/all-products.component';
+// import { ViewProductComponent } from './view-product/view-product.component';
+// import { LoginComponent } from './login/login.component';
+// import { RegisterComponent } from './register/register.component';
+// import { WhishlistComponent } from './whishlist/whishlist.component';
+// import { CartComponent } from './cart/cart.component';
+// import {HttpClientModule} from '@angular/common/http'
+// import { ReactiveFormsModule } from '@angular/forms';
+
+// @NgModule({
+//   declarations: [
+//     AppComponent,
+//     FooterComponent,
+//     HeaderComponent,
+//     AllProductsComponent,
+//     ViewProductComponent,
+//     LoginComponent,
+//     RegisterComponent,
+//     WhishlistComponent,
+//     CartComponent
+//   ],
+//   imports: [
+//     BrowserModule,
+//     AppRoutingModule,
+//     HttpClientModule,
+//     ReactiveFormsModule
+
+//   ],
+//   providers: [],
+//   bootstrap: [AppComponent]
+// })
+// export class AppModule { }
+
+
+
+
+//approuting
+
+// import { NgModule } from '@angular/core';
+// import { RouterModule, Routes } from '@angular/router';
+// import { AllProductsComponent } from './all-products/all-products.component';
+// import { LoginComponent } from './login/login.component';
+// import { RegisterComponent } from './register/register.component';
+// import { CartComponent } from './cart/cart.component';
+// import { WhishlistComponent } from './whishlist/whishlist.component';
+// import { ViewProductComponent } from './view-product/view-product.component';
+
+// const routes: Routes = [
+//   {path:'',component:AllProductsComponent},
+//   {path:'login',component:LoginComponent},
+//   {path:'register',component:RegisterComponent},
+//   {path:'cart',component:CartComponent},
+//   {path:'wishlist',component:WhishlistComponent},
+//   {path:'singleviw/:id',component:ViewProductComponent},
+//   {path:'**',redirectTo:""}
+
+
+// ];
+
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes)],
+//   exports: [RouterModule]
+// })
+// export class AppRoutingModule { }
